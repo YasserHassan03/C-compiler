@@ -1,0 +1,195 @@
+Compiling: compiler_tests/array/index_expression.c
+int f()
+{
+    int i;
+    int x[8];
+    int acc;
+    for(i=8; i<16; i++){
+        x[i-8]=i;
+    }
+    acc=0;
+    for(i=0; i<8; i++){
+        acc=acc+x[i+0];
+    }
+    return acc;
+}
+Parsing complete
+####################    AST    ####################
+├── 11ProgramNode
+│   └── 19TranslationUnitNode
+│       └── 23ExternalDeclarationNode
+│           └── 12FunctionNode
+│               ├── 19DeclarationSpecNode
+│               │   └──8TypeNode : int
+│               ├── 14DeclaratorNode
+│               │   └── 15FuncDirDeclNode
+│               │       ├──15IdDirDeclarator : f
+│               │       ├──12TerminalNode : (
+│               │       └──12TerminalNode : )
+│               └── 21CompoundStatementNode
+│                   ├──12TerminalNode : {
+│                   ├── 19DeclarationListNode
+│                   │   ├── 15DeclarationNode
+│                   │   │   ├── 19DeclarationSpecNode
+│                   │   │   │   └──8TypeNode : int
+│                   │   │   └── 23InitDeclarationListNode
+│                   │   │       └── 18InitDeclaratorNode
+│                   │   │           └── 14DeclaratorNode
+│                   │   │               └──15IdDirDeclarator : i
+│                   │   ├── 15DeclarationNode
+│                   │   │   ├── 19DeclarationSpecNode
+│                   │   │   │   └──8TypeNode : int
+│                   │   │   └── 23InitDeclarationListNode
+│                   │   │       └── 18InitDeclaratorNode
+│                   │   │           └── 14DeclaratorNode
+│                   │   │               └── 26ArrayDirDeclaratorWithSize
+│                   │   │                   ├──15IdDirDeclarator : x
+│                   │   │                   ├──12TerminalNode : [
+│                   │   │                   ├── 22ConstantExpressionNode
+│                   │   │                   │   └──12ConstantNode : 8
+│                   │   │                   └──12TerminalNode : ]
+│                   │   └── 15DeclarationNode
+│                   │       ├── 19DeclarationSpecNode
+│                   │       │   └──8TypeNode : int
+│                   │       └── 23InitDeclarationListNode
+│                   │           └── 18InitDeclaratorNode
+│                   │               └── 14DeclaratorNode
+│                   │                   └──15IdDirDeclarator : acc
+│                   ├── 17StatementListNode
+│                   │   ├── 13StatementNode
+│                   │   │   └── 21ForThreeStatementNode
+│                   │   │       ├──12TerminalNode : for
+│                   │   │       ├──12TerminalNode : (
+│                   │   │       ├── 23ExpressionStatementNode
+│                   │   │       │   └── 14ExpressionNode
+│                   │   │       │       └── 22AssigneeExpressionNode
+│                   │   │       │           ├──14IdentifierNode : i
+│                   │   │       │           ├──22AssignmentOperatorNode : =
+│                   │   │       │           └── 22AssignerExpressionNode
+│                   │   │       │               └──12ConstantNode : 8
+│                   │   │       ├── 23ExpressionStatementNode
+│                   │   │       │   └── 14ExpressionNode
+│                   │   │       │       └── 22AssignerExpressionNode
+│                   │   │       │           └── 24RelationalExpressionNode
+│                   │   │       │               ├──14IdentifierNode : i
+│                   │   │       │               ├──12TerminalNode : <
+│                   │   │       │               └──12ConstantNode : 16
+│                   │   │       ├── 14ExpressionNode
+│                   │   │       │   └── 22AssignerExpressionNode
+│                   │   │       │       └── 27IncDecPostfixExpressionNode
+│                   │   │       │           ├──14IdentifierNode : i
+│                   │   │       │           └──12TerminalNode : ++
+│                   │   │       ├──12TerminalNode : )
+│                   │   │       └── 13StatementNode
+│                   │   │           └── 21CompoundStatementNode
+│                   │   │               ├──12TerminalNode : {
+│                   │   │               ├── 17StatementListNode
+│                   │   │               │   └── 13StatementNode
+│                   │   │               │       └── 23ExpressionStatementNode
+│                   │   │               │           └── 14ExpressionNode
+│                   │   │               │               └── 22AssigneeExpressionNode
+│                   │   │               │                   ├── 31ArrayIndexPostfixExpressionNode
+│                   │   │               │                   │   ├──14IdentifierNode : x
+│                   │   │               │                   │   ├──12TerminalNode : [
+│                   │   │               │                   │   ├── 14ExpressionNode
+│                   │   │               │                   │   │   └── 22AssignerExpressionNode
+│                   │   │               │                   │   │       └── 22AdditiveExpressionNode
+│                   │   │               │                   │   │           ├──14IdentifierNode : i
+│                   │   │               │                   │   │           ├──12TerminalNode : -
+│                   │   │               │                   │   │           └──12ConstantNode : 8
+│                   │   │               │                   │   └──12TerminalNode : ]
+│                   │   │               │                   ├──22AssignmentOperatorNode : =
+│                   │   │               │                   └── 22AssignerExpressionNode
+│                   │   │               │                       └──14IdentifierNode : i
+│                   │   │               └──12TerminalNode : }
+│                   │   ├── 13StatementNode
+│                   │   │   └── 23ExpressionStatementNode
+│                   │   │       └── 14ExpressionNode
+│                   │   │           └── 22AssigneeExpressionNode
+│                   │   │               ├──14IdentifierNode : acc
+│                   │   │               ├──22AssignmentOperatorNode : =
+│                   │   │               └── 22AssignerExpressionNode
+│                   │   │                   └──12ConstantNode : 0
+│                   │   ├── 13StatementNode
+│                   │   │   └── 21ForThreeStatementNode
+│                   │   │       ├──12TerminalNode : for
+│                   │   │       ├──12TerminalNode : (
+│                   │   │       ├── 23ExpressionStatementNode
+│                   │   │       │   └── 14ExpressionNode
+│                   │   │       │       └── 22AssigneeExpressionNode
+│                   │   │       │           ├──14IdentifierNode : i
+│                   │   │       │           ├──22AssignmentOperatorNode : =
+│                   │   │       │           └── 22AssignerExpressionNode
+│                   │   │       │               └──12ConstantNode : 0
+│                   │   │       ├── 23ExpressionStatementNode
+│                   │   │       │   └── 14ExpressionNode
+│                   │   │       │       └── 22AssignerExpressionNode
+│                   │   │       │           └── 24RelationalExpressionNode
+│                   │   │       │               ├──14IdentifierNode : i
+│                   │   │       │               ├──12TerminalNode : <
+│                   │   │       │               └──12ConstantNode : 8
+│                   │   │       ├── 14ExpressionNode
+│                   │   │       │   └── 22AssignerExpressionNode
+│                   │   │       │       └── 27IncDecPostfixExpressionNode
+│                   │   │       │           ├──14IdentifierNode : i
+│                   │   │       │           └──12TerminalNode : ++
+│                   │   │       ├──12TerminalNode : )
+│                   │   │       └── 13StatementNode
+│                   │   │           └── 21CompoundStatementNode
+│                   │   │               ├──12TerminalNode : {
+│                   │   │               ├── 17StatementListNode
+│                   │   │               │   └── 13StatementNode
+│                   │   │               │       └── 23ExpressionStatementNode
+│                   │   │               │           └── 14ExpressionNode
+│                   │   │               │               └── 22AssigneeExpressionNode
+│                   │   │               │                   ├──14IdentifierNode : acc
+│                   │   │               │                   ├──22AssignmentOperatorNode : =
+│                   │   │               │                   └── 22AssignerExpressionNode
+│                   │   │               │                       └── 22AdditiveExpressionNode
+│                   │   │               │                           ├──14IdentifierNode : acc
+│                   │   │               │                           ├──12TerminalNode : +
+│                   │   │               │                           └── 31ArrayIndexPostfixExpressionNode
+│                   │   │               │                               ├──14IdentifierNode : x
+│                   │   │               │                               ├──12TerminalNode : [
+│                   │   │               │                               ├── 14ExpressionNode
+│                   │   │               │                               │   └── 22AssignerExpressionNode
+│                   │   │               │                               │       └── 22AdditiveExpressionNode
+│                   │   │               │                               │           ├──14IdentifierNode : i
+│                   │   │               │                               │           ├──12TerminalNode : +
+│                   │   │               │                               │           └──12ConstantNode : 0
+│                   │   │               │                               └──12TerminalNode : ]
+│                   │   │               └──12TerminalNode : }
+│                   │   └── 13StatementNode
+│                   │       └── 10ReturnNode
+│                   │           ├──12TerminalNode : return
+│                   │           ├── 14ExpressionNode
+│                   │           │   └── 22AssignerExpressionNode
+│                   │           │       └──14IdentifierNode : acc
+│                   │           └──12TerminalNode : ;
+│                   └──12TerminalNode : }
+t0 0 0
+t1 0 0
+t2 1 0
+t3 0 0
+t4 0 0
+t5 0 0
+t6 0 0
+a1 0 0
+a2 0 0
+a3 0 0
+a4 0 0
+a5 0 0
+a6 0 0
+a7 0 0
+s1 0 0
+s10 0 0
+s11 0 0
+s2 0 0
+s3 0 0
+s4 0 0
+s5 0 0
+s6 0 0
+s7 0 0
+s8 0 0
+s9 0 0
+Compiled to: ./bin/output/compiler_tests_array_index_expression.s

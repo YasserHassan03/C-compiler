@@ -1,0 +1,6 @@
+./bin/output/compiler_tests_float_add_double.s: Assembler messages:
+./bin/output/compiler_tests_float_add_double.s:7: Error: illegal operands `sw fa1,-20(s0)'
+./bin/output/compiler_tests_float_add_double.s:8: Error: illegal operands `sw fa2,-28(s0)'
+./bin/output/compiler_tests_float_add_double.s:9: Error: illegal operands `lw ft1,-20(s0)'
+./bin/output/compiler_tests_float_add_double.s:10: Error: illegal operands `lw ft2,-28(s0)'
+./bin/output/compiler_tests_float_add_double.s:12: Error: illegal operands `mv a0,ft0'

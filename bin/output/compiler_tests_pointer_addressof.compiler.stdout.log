@@ -1,0 +1,52 @@
+Compiling: compiler_tests/pointer/addressof.c
+int f()
+{
+    int x;
+    int *y=&x;
+    return 13;
+}
+Parsing complete
+####################    AST    ####################
+├── 11ProgramNode
+│   └── 19TranslationUnitNode
+│       └── 23ExternalDeclarationNode
+│           └── 12FunctionNode
+│               ├── 19DeclarationSpecNode
+│               │   └──8TypeNode : int
+│               ├── 14DeclaratorNode
+│               │   └── 15FuncDirDeclNode
+│               │       ├──15IdDirDeclarator : f
+│               │       ├──12TerminalNode : (
+│               │       └──12TerminalNode : )
+│               └── 21CompoundStatementNode
+│                   ├──12TerminalNode : {
+│                   ├── 19DeclarationListNode
+│                   │   ├── 15DeclarationNode
+│                   │   │   ├── 19DeclarationSpecNode
+│                   │   │   │   └──8TypeNode : int
+│                   │   │   └── 23InitDeclarationListNode
+│                   │   │       └── 18InitDeclaratorNode
+│                   │   │           └── 14DeclaratorNode
+│                   │   │               └──15IdDirDeclarator : x
+│                   │   └── 15DeclarationNode
+│                   │       ├── 19DeclarationSpecNode
+│                   │       │   └──8TypeNode : int
+│                   │       └── 23InitDeclarationListNode
+│                   │           └── 18InitDeclaratorNode
+│                   │               ├── 14DeclaratorNode
+│                   │               │   ├──12TerminalNode : *
+│                   │               │   └──15IdDirDeclarator : y
+│                   │               └── 15InitializerNode
+│                   │                   └── 22AssignerExpressionNode
+│                   │                       └── 19UnaryExpressionNode
+│                   │                           ├──13UnaryOperator : &
+│                   │                           └──14IdentifierNode : x
+│                   ├── 17StatementListNode
+│                   │   └── 13StatementNode
+│                   │       └── 10ReturnNode
+│                   │           ├──12TerminalNode : return
+│                   │           ├── 14ExpressionNode
+│                   │           │   └── 22AssignerExpressionNode
+│                   │           │       └──12ConstantNode : 13
+│                   │           └──12TerminalNode : ;
+│                   └──12TerminalNode : }

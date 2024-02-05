@@ -1,0 +1,92 @@
+Compiling: compiler_tests/functions/call_identity_internal.c
+int g(int x)
+{
+    return x;
+}
+
+int f()
+{
+    return g(10);
+}
+Parsing complete
+####################    AST    ####################
+├── 11ProgramNode
+│   └── 19TranslationUnitNode
+│       ├── 23ExternalDeclarationNode
+│       │   └── 12FunctionNode
+│       │       ├── 19DeclarationSpecNode
+│       │       │   └──8TypeNode : int
+│       │       ├── 14DeclaratorNode
+│       │       │   └── 21FuncDirDeclParamsNode
+│       │       │       ├──15IdDirDeclarator : g
+│       │       │       ├──12TerminalNode : (
+│       │       │       ├── 13ParamListNode
+│       │       │       │   └── 24ParameterDeclarationNode
+│       │       │       │       ├── 19DeclarationSpecNode
+│       │       │       │       │   └──8TypeNode : int
+│       │       │       │       └── 14DeclaratorNode
+│       │       │       │           └──15IdDirDeclarator : x
+│       │       │       └──12TerminalNode : )
+│       │       └── 21CompoundStatementNode
+│       │           ├──12TerminalNode : {
+│       │           ├── 17StatementListNode
+│       │           │   └── 13StatementNode
+│       │           │       └── 10ReturnNode
+│       │           │           ├──12TerminalNode : return
+│       │           │           ├── 14ExpressionNode
+│       │           │           │   └── 22AssignerExpressionNode
+│       │           │           │       └──14IdentifierNode : x
+│       │           │           └──12TerminalNode : ;
+│       │           └──12TerminalNode : }
+│       └── 23ExternalDeclarationNode
+│           └── 12FunctionNode
+│               ├── 19DeclarationSpecNode
+│               │   └──8TypeNode : int
+│               ├── 14DeclaratorNode
+│               │   └── 15FuncDirDeclNode
+│               │       ├──15IdDirDeclarator : f
+│               │       ├──12TerminalNode : (
+│               │       └──12TerminalNode : )
+│               └── 21CompoundStatementNode
+│                   ├──12TerminalNode : {
+│                   ├── 17StatementListNode
+│                   │   └── 13StatementNode
+│                   │       └── 10ReturnNode
+│                   │           ├──12TerminalNode : return
+│                   │           ├── 14ExpressionNode
+│                   │           │   └── 22AssignerExpressionNode
+│                   │           │       └── 24FunctionCallWithArgsNode
+│                   │           │           ├──14IdentifierNode : g
+│                   │           │           ├──12TerminalNode : (
+│                   │           │           ├── 26ArgumentExpressionListNode
+│                   │           │           │   └── 22AssignerExpressionNode
+│                   │           │           │       └──12ConstantNode : 10
+│                   │           │           └──12TerminalNode : )
+│                   │           └──12TerminalNode : ;
+│                   └──12TerminalNode : }
+t0 0 0
+t1 0 0
+t2 0 0
+t3 0 0
+t4 0 0
+t5 0 0
+t6 0 0
+a1 0 0
+a2 0 0
+a3 0 0
+a4 0 0
+a5 0 0
+a6 0 0
+a7 0 0
+s1 0 0
+s10 0 0
+s11 0 0
+s2 0 0
+s3 0 0
+s4 0 0
+s5 0 0
+s6 0 0
+s7 0 0
+s8 0 0
+s9 0 0
+Compiled to: ./bin/output/compiler_tests_functions_call_identity_internal.s

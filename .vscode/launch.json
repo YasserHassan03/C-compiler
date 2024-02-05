@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+        {
+            "name": "Antlr4 Debugger",
+            "type": "antlr-debug",
+            "request": "launch",
+            "input": "compiler_tests/_example/example.c",
+            "grammar": "src/c.g4",
+            "startRule": "program",
+            "printParseTree": true,
+            "visualParseTree": true
+        }
+    ]
+}

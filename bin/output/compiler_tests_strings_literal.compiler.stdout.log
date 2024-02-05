@@ -1,0 +1,48 @@
+Compiling: compiler_tests/strings/literal.c
+int g()
+{
+    char *x="hello";
+    return x[0];
+}
+Parsing complete
+####################    AST    ####################
+├── 11ProgramNode
+│   └── 19TranslationUnitNode
+│       └── 23ExternalDeclarationNode
+│           └── 12FunctionNode
+│               ├── 19DeclarationSpecNode
+│               │   └──8TypeNode : int
+│               ├── 14DeclaratorNode
+│               │   └── 15FuncDirDeclNode
+│               │       ├──15IdDirDeclarator : g
+│               │       ├──12TerminalNode : (
+│               │       └──12TerminalNode : )
+│               └── 21CompoundStatementNode
+│                   ├──12TerminalNode : {
+│                   ├── 19DeclarationListNode
+│                   │   └── 15DeclarationNode
+│                   │       ├── 19DeclarationSpecNode
+│                   │       │   └──8TypeNode : char
+│                   │       └── 23InitDeclarationListNode
+│                   │           └── 18InitDeclaratorNode
+│                   │               ├── 14DeclaratorNode
+│                   │               │   ├──12TerminalNode : *
+│                   │               │   └──15IdDirDeclarator : x
+│                   │               └── 15InitializerNode
+│                   │                   └── 22AssignerExpressionNode
+│                   │                       └──17StringLiteralNode : "hello"
+│                   ├── 17StatementListNode
+│                   │   └── 13StatementNode
+│                   │       └── 10ReturnNode
+│                   │           ├──12TerminalNode : return
+│                   │           ├── 14ExpressionNode
+│                   │           │   └── 22AssignerExpressionNode
+│                   │           │       └── 31ArrayIndexPostfixExpressionNode
+│                   │           │           ├──14IdentifierNode : x
+│                   │           │           ├──12TerminalNode : [
+│                   │           │           ├── 14ExpressionNode
+│                   │           │           │   └── 22AssignerExpressionNode
+│                   │           │           │       └──12ConstantNode : 0
+│                   │           │           └──12TerminalNode : ]
+│                   │           └──12TerminalNode : ;
+│                   └──12TerminalNode : }
